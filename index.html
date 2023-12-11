@@ -56,7 +56,7 @@
 
 </head>
 
-<body data-rc-theme="sunset">
+<body data-rc-theme="sunset" onload="fetchBlogData()">
 
     <!-- #region Menu Pill -->
     <div id="menuPillContainer" class="navbar navbar-dark">
@@ -79,7 +79,7 @@
                     <span class="menu-label">About Me</span>
                 </a>
             </div>
-            <div class="nav-item d-none">
+            <div class="nav-item">
                 <a class="nav-link" href="#skills">
                     <div class="icon-container" data-bs-toggle="tooltip" data-bs-placement="bottom"
                         data-bs-title="Skills" data-bs-custom-class="nav-tooltip">
@@ -88,7 +88,7 @@
                     <span class="menu-label">Skills</span>
                 </a>
             </div>
-            <div class="nav-item d-none">
+            <div class="nav-item">
                 <a class="nav-link" href="#projects">
                     <div class="icon-container" data-bs-toggle="tooltip" data-bs-placement="bottom"
                         data-bs-title="Projects" data-bs-custom-class="nav-tooltip">
@@ -106,7 +106,7 @@
                     <span class="menu-label">Challenges</span>
                 </a>
             </div>
-            <div class="nav-item d-none">
+            <div class="nav-item">
                 <a class="nav-link" href="#blog">
                     <div class="icon-container" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Blog"
                         data-bs-custom-class="nav-tooltip">
@@ -329,7 +329,7 @@
                                     <!-- <button class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#addressBookModal">Learn More</button> -->
                                     <a href="https://earthlyconnections.up.railway.app/" class="btn btn-primary"
-                                        target="_blank">Learn More</a>
+                                        target="_blank">Check it Out</a>
                                 </div>
                             </div>
                         </div>
@@ -346,8 +346,14 @@
                                         Read up on my tech learnings. Full Stack Blog built with: ASP.NET Core
                                         MVC, C# and SQL.
                                     </p>
-                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#blogModal"
-                                        disabled>COMING DEC 2023</button>
+
+
+                                    <a href="https://bytesandbranchesmvc-production.up.railway.app/"
+                                        class="btn btn-primary" target="_blank">Check it Out</a>
+
+
+                                    <!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#blogModal"
+                                        disabled>COMING DEC 2023</button> -->
                                     <!-- <a href="" class="btn btn-primary"
                                         target="_blank">Learn More</a> -->
                                 </div>
@@ -506,7 +512,7 @@
             </div>
         </section>
 
-        <section id="blog" class="section-page d-none">
+        <section id="blog" class="section-page ">
             <div class="container">
                 <h2 class="text-center display-1 mb-5">
                     <img src="/img/at-icon-logo-sunset-600.svg" />
@@ -518,7 +524,10 @@
                     a better undestanding as well.
                 </p>
                 <div id="blogs">
-                    <article class="card mb-4 blog-article">
+
+                    <!-- Blog Cards Go Here -->
+
+                    <!-- <article class="card mb-4 blog-article">
                         <div class="row g-0 blog-row">
                             <div class="col-12 col-lg-4 blog-header">
                                 <a href="#" class="blog-image-link">
@@ -648,7 +657,7 @@
                             </div>
 
                         </div>
-                    </article>
+                    </article> -->
                 </div>
 
             </div>
@@ -730,6 +739,38 @@
         </div>
     </footer>
 
+
+    <!-- Blog Card Template -->
+    <template id="blog-template">
+        <article class="card mb-4 blog-article">
+            <div class="row g-0 blog-row">
+                <div class="col-12 col-lg-4 blog-header">
+                    <a href="" class="blog-image-link" data-blog="imageLink">
+                        <img src="" class="blog-image" />
+                    </a>
+                    <div class="blog-date">
+                        <div class="blog-day" data-blog="day">11</div>
+                        <div class="blog-month" data-blog="month">January</div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-8">
+                    <div class="card-body h-100 d-flex flex-column justify-content-around">
+                        <h2 class="card-title" data-blog="title"></h2>
+                        <p class="card-text line-clamp" data-blog="content">
+
+
+                        </p>
+                        <div>
+                            <a href="" class="btn btn-primary" data-blog="readMoreLink">Read More</a>
+                        </div>
+                        <p class="card-text">
+                            <small class="text-muted" data-blog="publishedDate"> </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </template>
 
     <!-- #region MODALS -->
     <!-- Bug Tracker Modal -->
@@ -1061,6 +1102,9 @@
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     </script>
+
+    <!-- Custom JS -->
+    <script src="/js/blogApi.js"></script>
 
 </body>
 
