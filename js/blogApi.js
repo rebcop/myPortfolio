@@ -13,15 +13,16 @@ function displayBlogData(blogPosts, baseUrl) {
     let template = document.getElementById('blog-template');
     let blogSection = document.getElementById('blogs');
 
-    
     blogPosts.forEach((blogPost) => {
         const blogPostCard = document.importNode(template.content, true);
+        
         //format image
         let imageDiv = blogPostCard.querySelector('[data-blog="imageLink"]');
         imageDiv.setAttribute(
             "href",
             `${baseUrl}/content/${blogPost.slug}`
         );
+
         imageDiv.href = `${baseUrl}/content/${blogPost.slug}`;
 
         // let imgTag = document.createElement('img');
@@ -30,14 +31,11 @@ function displayBlogData(blogPosts, baseUrl) {
             "src",
             `data:${blogPost.imageType};base64,${blogPost.imageData}`
         );
-        // imgTag.classList.add('blog-image');
-        // imageDiv.appendChild(imgTag);
-        // <img src="data:image/gif;base64,xxxxxxxxxxxxx..." class="blog-image" alt="...">
-        //add title
+
         let blogTitleDiv = blogPostCard.querySelector('[data-blog="title"]');
         blogTitleDiv.innerHTML = blogPost.title;
 
-        let blogDate = new Date(blogPost.createdDate); // 2009-11-10
+        let blogDate = new Date(blogPost.createdDate);
         let month = blogDate.toLocaleString('default', { month: 'long' });
         let day = blogDate.getDate();
 
